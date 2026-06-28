@@ -170,7 +170,7 @@ function reduce(state: OxonoState, action: OxonoAction, ctx: ActionContext) {
         action.totem
       } rồi đặt quân ${action.totem} tại ${humanCell(action.place)}.`,
     },
-  ];
+  ] as { text: string; seatIndex?: number }[];
 
   if (isWinningPlacement(next, action.place)) {
     next.winner = seat;

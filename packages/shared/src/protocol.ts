@@ -8,6 +8,7 @@ import type {
   GameId,
   GameSnapshot,
   MatchRecord,
+  TableId,
   TableOptions,
   TableState,
   TableSummary,
@@ -54,6 +55,7 @@ export interface GameCatalogEntry {
   name: string;
   tagline: string;
   description: string;
+  rules: string[];
   minPlayers: number;
   maxPlayers: number;
   estimatedMinutes: number;

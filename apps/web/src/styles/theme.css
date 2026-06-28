@@ -1,0 +1,196 @@
+/*
+ * BoardHub design tokens. Flat surfaces, honest borders, one restrained accent.
+ * No gradients anywhere. Light and dark are driven by Bootstrap's data-bs-theme.
+ */
+
+:root {
+  --bh-paper: #f4f4ef;
+  --bh-surface: #ffffff;
+  --bh-surface-2: #f0f0ea;
+  --bh-ink: #181a1c;
+  --bh-ink-soft: #41464c;
+  --bh-muted: #6b7178;
+  --bh-border: #e2e2da;
+  --bh-border-strong: #cfcfc5;
+
+  --bh-accent: #275c4e;
+  --bh-accent-strong: #1d4a3e;
+  --bh-accent-soft: #e6efea;
+
+  --bh-danger: #b23b3b;
+  --bh-success: #2f7d4f;
+  --bh-warning: #b5852a;
+  --bh-info: #2f6f8a;
+
+  --bh-pink: #c2548a;
+  --bh-black: #2a2a2a;
+
+  --bh-radius: 10px;
+  --bh-radius-sm: 7px;
+  --bh-radius-lg: 16px;
+  --bh-gap: 1rem;
+  --bh-shadow: 0 1px 0 rgba(24, 26, 28, 0.04);
+  --bh-font: 'Segoe UI', system-ui, -apple-system, Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  color-scheme: light;
+}
+
+[data-bs-theme='dark'] {
+  --bh-paper: #131418;
+  --bh-surface: #1c1e23;
+  --bh-surface-2: #23262c;
+  --bh-ink: #ececec;
+  --bh-ink-soft: #c3c7cc;
+  --bh-muted: #9097a0;
+  --bh-border: #2c2f36;
+  --bh-border-strong: #3a3e46;
+
+  --bh-accent: #4f9e84;
+  --bh-accent-strong: #6bb39c;
+  --bh-accent-soft: #1f2b27;
+
+  --bh-danger: #d46a6a;
+  --bh-success: #5aa97a;
+  --bh-warning: #cda04a;
+  --bh-info: #6aa6bf;
+
+  --bh-pink: #d473a3;
+  --bh-black: #cfcfcf;
+
+  --bh-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+  color-scheme: dark;
+}
+
+/* Map Bootstrap variables onto the BoardHub tokens. */
+:root {
+  --bs-body-font-family: var(--bh-font);
+  --bs-body-bg: var(--bh-paper);
+  --bs-body-color: var(--bh-ink);
+  --bs-border-color: var(--bh-border);
+  --bs-border-radius: var(--bh-radius);
+  --bs-border-radius-sm: var(--bh-radius-sm);
+  --bs-border-radius-lg: var(--bh-radius-lg);
+  --bs-primary: var(--bh-accent);
+  --bs-primary-rgb: 39, 92, 78;
+  --bs-link-color: var(--bh-accent);
+  --bs-link-color-rgb: 39, 92, 78;
+  --bs-link-hover-color: var(--bh-accent-strong);
+  --bs-emphasis-color: var(--bh-ink);
+  --bs-secondary-color: var(--bh-muted);
+  --bs-tertiary-bg: var(--bh-surface-2);
+}
+
+[data-bs-theme='dark'] {
+  --bs-body-bg: var(--bh-paper);
+  --bs-body-color: var(--bh-ink);
+  --bs-primary-rgb: 79, 158, 132;
+  --bs-link-color-rgb: 79, 158, 132;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bh-paper);
+  color: var(--bh-ink);
+  font-family: var(--bh-font);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  color: var(--bh-ink);
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Flatten Bootstrap components: remove gradients and soften shadows. */
+.btn {
+  --bs-btn-border-radius: var(--bh-radius-sm);
+  font-weight: 550;
+  background-image: none;
+}
+
+.btn-primary {
+  --bs-btn-bg: var(--bh-accent);
+  --bs-btn-border-color: var(--bh-accent);
+  --bs-btn-hover-bg: var(--bh-accent-strong);
+  --bs-btn-hover-border-color: var(--bh-accent-strong);
+  --bs-btn-active-bg: var(--bh-accent-strong);
+  --bs-btn-active-border-color: var(--bh-accent-strong);
+  --bs-btn-disabled-bg: var(--bh-accent);
+  --bs-btn-disabled-border-color: var(--bh-accent);
+  color: #fff;
+}
+
+.btn-outline-primary {
+  --bs-btn-color: var(--bh-accent);
+  --bs-btn-border-color: var(--bh-accent);
+  --bs-btn-hover-bg: var(--bh-accent);
+  --bs-btn-hover-border-color: var(--bh-accent);
+  --bs-btn-active-bg: var(--bh-accent);
+}
+
+.card {
+  --bs-card-bg: var(--bh-surface);
+  --bs-card-border-color: var(--bh-border);
+  --bs-card-border-radius: var(--bh-radius);
+  box-shadow: var(--bh-shadow);
+}
+
+.form-control,
+.form-select {
+  --bs-border-radius: var(--bh-radius-sm);
+  background-color: var(--bh-surface);
+  border-color: var(--bh-border-strong);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--bh-accent);
+  box-shadow: 0 0 0 0.18rem rgba(var(--bs-primary-rgb), 0.18);
+}
+
+.modal-content {
+  background-color: var(--bh-surface);
+  border-color: var(--bh-border);
+}
+
+.dropdown-menu {
+  --bs-dropdown-bg: var(--bh-surface);
+  --bs-dropdown-border-color: var(--bh-border);
+  --bs-dropdown-link-active-bg: var(--bh-accent);
+}
+
+.badge {
+  font-weight: 600;
+}
+
+.text-accent {
+  color: var(--bh-accent) !important;
+}
+
+.bg-surface {
+  background-color: var(--bh-surface) !important;
+}

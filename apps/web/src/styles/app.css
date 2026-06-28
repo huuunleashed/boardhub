@@ -1,0 +1,355 @@
+/* Layout and component styles for BoardHub. */
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-main {
+  flex: 1 1 auto;
+  width: 100%;
+}
+
+.container-bh {
+  width: 100%;
+  max-width: 1120px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+/* ------------------------------- navbar --------------------------------- */
+
+.bh-navbar {
+  background-color: var(--bh-surface);
+  border-bottom: 1px solid var(--bh-border);
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+}
+
+.bh-brand {
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  font-size: 1.2rem;
+  color: var(--bh-ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bh-brand:hover {
+  text-decoration: none;
+  color: var(--bh-accent);
+}
+
+.bh-brand-mark {
+  display: inline-grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  width: 22px;
+  height: 22px;
+}
+
+.bh-brand-mark span {
+  border-radius: 2px;
+  background-color: var(--bh-accent);
+}
+
+.bh-brand-mark span:nth-child(2) {
+  background-color: var(--bh-pink);
+}
+
+.bh-brand-mark span:nth-child(3) {
+  background-color: var(--bh-ink-soft);
+}
+
+.bh-brand-mark span:nth-child(4) {
+  background-color: var(--bh-warning);
+}
+
+.bh-navlink {
+  color: var(--bh-ink-soft);
+  font-weight: 550;
+  padding: 0.35rem 0.6rem;
+  border-radius: var(--bh-radius-sm);
+}
+
+.bh-navlink:hover {
+  color: var(--bh-ink);
+  text-decoration: none;
+  background-color: var(--bh-surface-2);
+}
+
+.bh-navlink.active {
+  color: var(--bh-accent);
+  background-color: var(--bh-accent-soft);
+}
+
+/* ------------------------------- avatar --------------------------------- */
+
+.bh-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 650;
+  flex: 0 0 auto;
+  user-select: none;
+  line-height: 1;
+}
+
+.bh-avatar.square {
+  border-radius: var(--bh-radius-sm);
+}
+
+/* ------------------------------- footer --------------------------------- */
+
+.bh-footer {
+  border-top: 1px solid var(--bh-border);
+  color: var(--bh-muted);
+  background-color: var(--bh-surface);
+  font-size: 0.9rem;
+}
+
+/* ----------------------------- landing ---------------------------------- */
+
+.bh-hero {
+  padding: clamp(2.5rem, 6vw, 5rem) 0;
+}
+
+.bh-hero h1 {
+  font-size: clamp(2rem, 5vw, 3.1rem);
+  line-height: 1.08;
+}
+
+.bh-section {
+  padding: clamp(2rem, 5vw, 3.5rem) 0;
+}
+
+.bh-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.78rem;
+  font-weight: 650;
+  color: var(--bh-accent);
+}
+
+.bh-feature {
+  border: 1px solid var(--bh-border);
+  border-radius: var(--bh-radius);
+  background-color: var(--bh-surface);
+  padding: 1.25rem;
+  height: 100%;
+}
+
+.bh-feature h3 {
+  font-size: 1.05rem;
+}
+
+.bh-step-num {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--bh-accent);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+/* ----------------------------- game cards ------------------------------- */
+
+.bh-game-card {
+  border: 1px solid var(--bh-border);
+  border-radius: var(--bh-radius);
+  background-color: var(--bh-surface);
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.12s ease;
+}
+
+.bh-game-card:hover {
+  border-color: var(--bh-border-strong);
+}
+
+.bh-game-cover {
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--bh-border);
+  background-color: var(--bh-surface-2);
+}
+
+/* ------------------------------- table ---------------------------------- */
+
+.bh-seat {
+  border: 1px solid var(--bh-border);
+  border-radius: var(--bh-radius);
+  background-color: var(--bh-surface);
+  padding: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.bh-seat.empty {
+  border-style: dashed;
+  color: var(--bh-muted);
+}
+
+.bh-seat.active {
+  border-color: var(--bh-accent);
+  box-shadow: inset 0 0 0 1px var(--bh-accent);
+}
+
+.bh-seat.turn {
+  border-color: var(--bh-accent);
+}
+
+.bh-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--bh-muted);
+  flex: 0 0 auto;
+}
+
+.bh-dot.on {
+  background-color: var(--bh-success);
+}
+
+/* ------------------------------- chat ----------------------------------- */
+
+.bh-chat {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+.bh-chat-log {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 0.5rem;
+  min-height: 140px;
+}
+
+.bh-chat-msg {
+  margin-bottom: 0.5rem;
+  font-size: 0.92rem;
+  line-height: 1.35;
+}
+
+.bh-chat-msg .who {
+  font-weight: 650;
+}
+
+.bh-chat-msg.system {
+  color: var(--bh-muted);
+  font-style: italic;
+}
+
+.bh-log {
+  font-size: 0.88rem;
+  color: var(--bh-ink-soft);
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.bh-log-entry {
+  padding: 0.25rem 0;
+  border-bottom: 1px solid var(--bh-border);
+}
+
+/* ------------------------------- panels --------------------------------- */
+
+.bh-panel {
+  border: 1px solid var(--bh-border);
+  border-radius: var(--bh-radius);
+  background-color: var(--bh-surface);
+}
+
+.bh-panel-head {
+  padding: 0.65rem 0.85rem;
+  border-bottom: 1px solid var(--bh-border);
+  font-weight: 650;
+  font-size: 0.95rem;
+}
+
+.bh-panel-body {
+  padding: 0.85rem;
+}
+
+.bh-code-pill {
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  background-color: var(--bh-surface-2);
+  border: 1px solid var(--bh-border);
+  border-radius: var(--bh-radius-sm);
+  padding: 0.15rem 0.5rem;
+}
+
+/* ------------------------------ utilities ------------------------------- */
+
+.bh-muted {
+  color: var(--bh-muted);
+}
+
+.bh-divider {
+  height: 1px;
+  background-color: var(--bh-border);
+  border: 0;
+  margin: 1rem 0;
+}
+
+.bh-clickable {
+  cursor: pointer;
+}
+
+.bh-toast-stack {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 1080;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: min(360px, calc(100vw - 2rem));
+}
+
+.bh-toast {
+  border: 1px solid var(--bh-border);
+  border-left-width: 4px;
+  border-radius: var(--bh-radius-sm);
+  background-color: var(--bh-surface);
+  padding: 0.6rem 0.8rem;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+  font-size: 0.92rem;
+}
+
+.bh-toast.info {
+  border-left-color: var(--bh-info);
+}
+.bh-toast.success {
+  border-left-color: var(--bh-success);
+}
+.bh-toast.warning {
+  border-left-color: var(--bh-warning);
+}
+.bh-toast.error {
+  border-left-color: var(--bh-danger);
+}
+
+@media (max-width: 575.98px) {
+  .container-bh {
+    padding-inline: 0.85rem;
+  }
+}
