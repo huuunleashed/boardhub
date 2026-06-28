@@ -80,7 +80,13 @@ export function TablePage() {
         </div>
         <div className="d-flex align-items-center gap-2 flex-wrap">
           <span className="bh-muted">Mã bàn</span>
-          <button type="button" className="bh-code-pill bh-clickable border-0" onClick={() => copy(table.code, 'mã bàn')}>
+          <button
+            type="button"
+            className="bh-code-pill bh-clickable border-0"
+            onClick={() => copy(table.code, 'mã bàn')}
+            aria-label={`Sao chép mã bàn ${table.code}`}
+            title="Sao chép mã bàn"
+          >
             {table.code}
           </button>
           <button type="button" className="btn btn-sm btn-outline-secondary" onClick={() => copy(shareUrl, 'liên kết')}>

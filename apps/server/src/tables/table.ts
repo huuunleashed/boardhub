@@ -340,6 +340,7 @@ export class Table {
   /* -------------------------------- chat ----------------------------------- */
 
   addChat(user: SeatUser | null, text: string, kind: 'user' | 'system' = 'user'): ChatMessage | null {
+    if (typeof text !== 'string' || text.length > CHAT_MAX_LENGTH * 5) return null;
     const clean = normalizeText(text).slice(0, CHAT_MAX_LENGTH);
     if (!clean) return null;
     const message: ChatMessage = {

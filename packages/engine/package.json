@@ -19,6 +19,7 @@
     "@boardhub/shared": "workspace:*"
   },
   "devDependencies": {
+    "@types/node": "^22.10.5",
     "typescript": "^5.8.3",
     "vitest": "^2.1.9"
   }

@@ -71,7 +71,7 @@ describe('Oxono placement', () => {
   it('limits placement to free orthogonal neighbors', () => {
     const s = fresh();
     // Totem X virtually at 15, neighbor 21 is totem O.
-    const moved = oxono.view(s);
+    const moved = oxono.view(s, 0);
     moved.totem.X = 15;
     const cells = placementCells(moved, 'X', 15);
     expect([...cells].sort((a, b) => a - b)).toEqual([9, 14, 16]);

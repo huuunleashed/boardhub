@@ -26,3 +26,16 @@ export function corsOrigins(): string[] | true {
     .map((s) => s.trim())
     .filter(Boolean);
 }
+
+/** Fail fast on insecure defaults when running in production. */
+export function validateConfig(): void {
+  if (process.env.NODE_ENV !== 'production') return;
+  if (!process.env.JWT_SECRET || config.jwtSecret === 'dev-insecure-secret-change-me') {
+    throw new Error('JWT_SECRET phải được đặt một giá trị bí mật khi chạy production.');
+  }
+  if (!config.corsOrigin) {
+    console.warn(
+      '[config] CORS_ORIGIN đang trống nên cho phép mọi nguồn. Hãy đặt CORS_ORIGIN khi triển khai công khai.',
+    );
+  }
+}

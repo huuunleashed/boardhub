@@ -1,13 +1,14 @@
 import cors from '@fastify/cors';
 import Fastify from 'fastify';
 import { Server } from 'socket.io';
-import { config, corsOrigins } from './config.js';
+import { config, corsOrigins, validateConfig } from './config.js';
 import { registerRoutes } from './http/routes.js';
 import { setupSocket } from './realtime/socket.js';
 import { getStore } from './store/index.js';
 import { TableManager } from './tables/manager.js';
 
 async function main(): Promise<void> {
+  validateConfig();
   await getStore().init();
 
   const app = Fastify({
@@ -22,6 +23,7 @@ async function main(): Promise<void> {
 
   const io = new Server(app.server, {
     path: '/socket.io',
+    maxHttpBufferSize: 1e5,
     cors: {
       origin: corsOrigins(),
       methods: ['GET', 'POST'],

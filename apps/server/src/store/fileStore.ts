@@ -39,7 +39,7 @@ export class FileStore implements Store {
           matches: parsed.matches ?? {},
         };
       } catch {
-        // Corrupt or empty file: start fresh rather than crash.
+        console.warn('[store] db.json không đọc được hoặc bị hỏng, khởi tạo cơ sở dữ liệu mới.');
         this.db = { users: {}, usernames: {}, matches: {} };
       }
     } else {

@@ -68,7 +68,7 @@ export function Navbar() {
                 style={{ borderRadius: 999 }}
               >
                 <Avatar name={user.displayName} color={user.avatarColor} size={24} />
-                <span className="fw-semibold" style={{ maxWidth: 120 }}>
+                <span className="fw-semibold text-truncate" style={{ maxWidth: 120 }}>
                   {user.displayName}
                 </span>
               </button>

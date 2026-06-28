@@ -182,6 +182,9 @@ export class TableManager {
     const table = this.tables.get(tableId);
     if (!table) return;
     table.markDisconnected(user.userId, socket.id);
+    if (!table.seatOfUser(user.userId)) {
+      table.removeSpectator(user.userId);
+    }
     if (table.isEmpty()) {
       this.scheduleEmptyCleanup(table);
     }
@@ -239,15 +242,19 @@ export class TableManager {
 
   /** Called after any state changing game event: refresh, record, broadcast, schedule. */
   async afterGameEvent(table: Table): Promise<void> {
-    const wasPlaying = table.status === 'playing';
-    table.refreshStatusFromRunner();
-    if (wasPlaying && table.status === 'finished') {
-      await this.recordMatch(table);
-      table.addChat(null, 'Ván đấu kết thúc.', 'system');
-      this.emitTableState(table);
+    try {
+      const wasPlaying = table.status === 'playing';
+      table.refreshStatusFromRunner();
+      if (wasPlaying && table.status === 'finished') {
+        await this.recordMatch(table);
+        table.addChat(null, 'Ván đấu kết thúc.', 'system');
+        this.emitTableState(table);
+      }
+      await this.emitSnapshots(table);
+      this.scheduleNext(table);
+    } catch (err) {
+      console.error('[afterGameEvent]', err);
     }
-    await this.emitSnapshots(table);
-    this.scheduleNext(table);
   }
 
   private scheduleNext(table: Table): void {
