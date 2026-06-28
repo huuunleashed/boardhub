@@ -1,0 +1,36 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# build output
+dist/
+build/
+*.tsbuildinfo
+
+# env and secrets
+.env
+.env.local
+.env.*.local
+
+# runtime data (file-backed persistence)
+apps/server/data/*.json
+!apps/server/data/.gitkeep
+
+# logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# editor / os
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# test / coverage
+coverage/
+.vitest/
+
+# misc
+*.local

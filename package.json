@@ -1,0 +1,22 @@
+{
+  "name": "boardhub",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.5.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "pnpm -r --parallel run dev",
+    "build": "pnpm -r run build",
+    "typecheck": "pnpm -r run typecheck",
+    "test": "pnpm --filter @boardhub/engine run test",
+    "start": "pnpm --filter @boardhub/server run start",
+    "clean": "pnpm -r exec rimraf dist node_modules/.cache"
+  },
+  "devDependencies": {
+    "rimraf": "^6.0.1",
+    "typescript": "^5.8.3"
+  }
+}
