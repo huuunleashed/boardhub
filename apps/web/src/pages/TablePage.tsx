@@ -5,6 +5,7 @@ import type { GameSnapshot, TableSeat, TableState } from '@boardhub/shared';
 import { Avatar } from '../components/Avatar';
 import { Icon } from '../components/Icon';
 import { Loading } from '../components/Loading';
+import { CollapsiblePanel } from '../components/CollapsiblePanel';
 import { Chat } from '../components/table/Chat';
 import { CollectTable } from '../games/collect/CollectTable';
 import { OxonoBoard } from '../games/oxono/OxonoBoard';
@@ -306,7 +307,7 @@ function SidePanel({ table, actions }: { table: TableState; actions: ReturnType<
           </div>
         </div>
       )}
-      <div className="bh-panel" style={{ height: 360 }}>
+      <div className="bh-panel" style={{ height: 360, display: 'flex', flexDirection: 'column' }}>
         <div className="bh-panel-head">Trò chuyện</div>
         <Chat messages={actions.chat} onSend={actions.sendChat} />
       </div>
@@ -409,10 +410,9 @@ function GameView({
             )}
           </div>
         </div>
-        <div className="bh-panel" style={{ height: 320 }}>
-          <div className="bh-panel-head">Trò chuyện</div>
+        <CollapsiblePanel title="Trò chuyện" fill style={{ height: 320 }}>
           <Chat messages={actions.chat} onSend={actions.sendChat} />
-        </div>
+        </CollapsiblePanel>
       </div>
     </div>
   );

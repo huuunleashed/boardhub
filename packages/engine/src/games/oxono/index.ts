@@ -35,9 +35,9 @@ const META: GameMeta = {
   name: 'Oxono',
   tagline: 'Cờ trừu tượng hai người, xếp bốn quân thẳng hàng',
   description:
-    'Oxono là cờ trừu tượng cho hai người trên bàn 6x6. Mỗi lượt bạn di chuyển một totem rồi đặt một quân cùng ký hiệu. Thắng khi xếp được bốn quân thẳng hàng cùng màu hoặc cùng ký hiệu.',
+    'Oxono là cờ trừu tượng cho hai người trên bàn 9x9. Mỗi lượt bạn di chuyển một totem rồi đặt một quân cùng ký hiệu. Thắng khi xếp được bốn quân thẳng hàng cùng màu hoặc cùng ký hiệu.',
   rules: [
-    'Bàn cờ 6x6 với hai totem dùng chung là X và O.',
+    'Bàn cờ 9x9 với hai totem dùng chung là X và O.',
     'Mỗi lượt: chọn một totem, trượt nó theo hàng hoặc cột bao xa tùy ý qua các ô trống.',
     'Sau khi di chuyển, đặt một quân cùng ký hiệu totem vào ô trống kề bên totem.',
     'Nếu totem bị vây kín, nó có thể nhảy qua các quân để tới ô trống đầu tiên.',
@@ -209,12 +209,13 @@ function legalActions(state: OxonoState, seatIndex: number): OxonoAction[] {
   return out;
 }
 
-const CENTER = [14, 15, 20, 21];
+const CENTER = [40, 39, 41, 31, 49];
 
 function distanceToCenter(index: number): number {
+  const mid = (OXONO_SIZE - 1) / 2;
   const r = rowOf(index);
   const c = colOf(index);
-  return Math.abs(r - 2.5) + Math.abs(c - 2.5);
+  return Math.abs(r - mid) + Math.abs(c - mid);
 }
 
 /**

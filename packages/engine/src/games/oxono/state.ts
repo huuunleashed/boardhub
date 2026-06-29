@@ -42,18 +42,18 @@ export interface OxonoState {
 /** The Oxono view is identical to the state, the game has no hidden information. */
 export type OxonoView = OxonoState;
 
-export const OXONO_SIZE = 6;
+export const OXONO_SIZE = 9;
 export const OXONO_CELLS = OXONO_SIZE * OXONO_SIZE;
-export const OXONO_START_RESERVE = 8;
+export const OXONO_START_RESERVE = 12;
 
 /** Seat 0 plays pink, seat 1 plays black. */
 export const SEAT_COLOR: OxColor[] = ['pink', 'black'];
 
-/** Starting totem cells, placed at the center of the board. */
+/** Starting totem cells, placed at the center of the 9x9 board. */
 export const TOTEM_START: Record<OxSymbol, number> = {
-  // X at row 2 col 2 (index 14), O at row 3 col 3 (index 21).
-  X: 14,
-  O: 21,
+  // X at row 4 col 3 (index 39), O at row 4 col 5 (index 41), flanking the center.
+  X: 39,
+  O: 41,
 };
 
 export const COLOR_LABEL: Record<OxColor, string> = {

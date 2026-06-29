@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import {
+  OXONO_SIZE,
   placementCells,
   totemDestinations,
   winningLine,
@@ -7,8 +8,8 @@ import {
   type OxSymbol,
 } from '@boardhub/engine';
 
-const N = 6;
-const CELL = 60;
+const N = OXONO_SIZE;
+const CELL = 56;
 const BOARD = N * CELL;
 
 const COLOR_VAR: Record<string, string> = {

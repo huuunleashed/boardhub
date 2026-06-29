@@ -23,7 +23,8 @@ export type IconName =
   | 'dice'
   | 'lock'
   | 'robot'
-  | 'flag';
+  | 'flag'
+  | 'chevron';
 
 const PATHS: Record<IconName, JSX.Element> = {
   menu: (
@@ -167,6 +168,7 @@ const PATHS: Record<IconName, JSX.Element> = {
       <path d="M5 4h11l-2 3 2 3H5z" />
     </>
   ),
+  chevron: <path d="M6 9l6 6 6-6" />,
 };
 
 interface IconProps {
