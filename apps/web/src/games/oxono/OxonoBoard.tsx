@@ -102,28 +102,54 @@ export function OxonoBoard({ view, interactive, yourSeat, onAction }: Props) {
 
   function handleCell(index: number): void {
     if (!myTurn) return;
+
+    // Placement phase: a destination is chosen and the totem is previewed there.
+    if (totem && dest !== null) {
+      // Click the previewed totem to cancel the move and pick a destination again.
+      if (index === dest) {
+        setDest(null);
+        return;
+      }
+      // Place on any highlighted cell, including the totem's now vacated origin cell.
+      if (places.includes(index)) {
+        onAction({ totem, to: dest, place: index });
+        setTotem(null);
+        setDest(null);
+        return;
+      }
+      // Choose a different destination for the same totem.
+      if (dests.includes(index)) {
+        setDest(index);
+        return;
+      }
+      // Switch to the other totem.
+      if (view.totem.X === index && reserveOk('X')) {
+        setTotem('X');
+        setDest(null);
+        return;
+      }
+      if (view.totem.O === index && reserveOk('O')) {
+        setTotem('O');
+        setDest(null);
+        return;
+      }
+      return;
+    }
+
+    // Selection phase: pick or toggle a totem, then pick a destination.
     if (view.totem.X === index && reserveOk('X')) {
-      setTotem('X');
+      setTotem(totem === 'X' ? null : 'X');
       setDest(null);
       return;
     }
     if (view.totem.O === index && reserveOk('O')) {
-      setTotem('O');
+      setTotem(totem === 'O' ? null : 'O');
       setDest(null);
       return;
     }
-    if (!totem) return;
-    if (dest === null) {
-      if (dests.includes(index)) setDest(index);
-      return;
+    if (totem && dests.includes(index)) {
+      setDest(index);
     }
-    if (places.includes(index)) {
-      onAction({ totem, to: dest, place: index });
-      setTotem(null);
-      setDest(null);
-      return;
-    }
-    if (dests.includes(index)) setDest(index);
   }
 
   const highlightDest = new Set(totem && dest === null ? dests : []);
